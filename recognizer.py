@@ -7,12 +7,12 @@ class recognizer():
         self.train = dataset.train[:,1:].T
 
 
-    def solve(self, b, y):
+    def solve(self, b, y, epsilon):
 
 
         self.x = cp.Variable(b.shape[0])
         self.obj = cp.Minimize(cp.norm(self.x,1))
-        self.constraints = [self.train*self.x == y]
+        self.constraints = [cp.norm(self.train*self.x - y, 2) <= epsilon]
         self.prob = cp.Problem(self.obj, self.constraints)
         self.prob.solve()
     def getOptim(self):
