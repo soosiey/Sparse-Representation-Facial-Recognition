@@ -5,7 +5,7 @@ import numpy as np
 import multiprocessing as mp
 
 
-dataset = dataset('ExtendedYaleB/', trainsplit=.01, testsplit=.99)
+dataset = dataset('ExtendedYaleB/', trainsplit=.005, testsplit=.995)
 FacialRecognition = recognizer(dataset)
 
 def trainingLoop(s, dataset=dataset, FacialRecognition=FacialRecognition):
@@ -13,7 +13,7 @@ def trainingLoop(s, dataset=dataset, FacialRecognition=FacialRecognition):
 
 
     #correct = 0
-    eps = .5
+    eps = 1
     #for s in tqdm(range(len(dataset.test))):
 
     x = np.random.default_rng().standard_normal(dataset.nsamps * 28)
