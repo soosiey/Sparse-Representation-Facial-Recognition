@@ -12,9 +12,12 @@ class recognizer():
 
         self.x = cp.Variable(b.shape[0])
         self.obj = cp.Minimize(cp.norm(self.x,1))
-        self.constraints = [cp.norm(self.train*self.x - y, 2) <= epsilon]
+        self.constraints = [cp.norm(self.train*self.x - y,2) <= epsilon]
         self.prob = cp.Problem(self.obj, self.constraints)
-        self.prob.solve()
+        try:
+            self.prob.solve()
+        except cp.error.SolverError:
+            self.prob.solve(solver="SCS")
     def getOptim(self):
         return self.x.value
     def getOptimVal(self):

@@ -8,13 +8,12 @@ from sklearn.model_selection import train_test_split as tts
 
 class dataset():
 
-    def __init__(self,root_dir,trainsplit=.3, testsplit=.7):
+    def __init__(self,root_dir,trainsplit=.3, testsplit=.7, h = 6, w = 5):
         self.train = []
         self.test = []
         s = 0
-        h = 12
-        w = 10
         self.ft = h * w
+        cnt = 0
         for dir in tqdm(os.listdir(root_dir)):
             if(dir[0] == '.'):
                 continue
@@ -24,7 +23,7 @@ class dataset():
                     check = np.array(Image.open('ExtendedYaleB/' + dir + '/' + f).resize((h,w))).flatten().astype(float)
                     check /= np.linalg.norm(check)
                     r = np.zeros(len(check) + 1)
-
+                    cnt+=1
                     r[0] = s
                     r[1:] = check
                     subjectpics.append(r)
@@ -38,5 +37,6 @@ class dataset():
         self.nsamps = self.train.shape[1]
         self.train = self.train.reshape((-1, h * w + 1))
         self.test = self.test.reshape((-1,h * w + 1))
+        print(len(self.test))
         np.random.shuffle(self.test)
 
