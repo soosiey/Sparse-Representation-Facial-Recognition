@@ -220,6 +220,7 @@ def celebTest(h, w):
 #reconstruction()
 #fullTest(12,10)
 all()
+
 #allNoise()
 #for i in [(6, 5), (12,10), (24, 20)]:
 #    celebTest(i[0], i[1])
