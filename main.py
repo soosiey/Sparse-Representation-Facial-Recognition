@@ -219,7 +219,7 @@ def celebTest(h, w):
     print("Accuracy:", correct / len(dset.test))
 #reconstruction()
 #fullTest(12,10)
-#all()
+all()
 #allNoise()
 #for i in [(6, 5), (12,10), (24, 20)]:
 #    celebTest(i[0], i[1])
@@ -270,20 +270,20 @@ def celebTest(h, w):
 
 
 
-im = np.array(Image.open('ExtendedYaleB/yaleB11/yaleB11_P00A-005E-10.pgm'))
-#im2 = im + np.random.normal(0,30,im.shape)
-a = im.shape
-im2 = im.flatten()
-
-salts = np.random.choice(len(im2), size = len(im2)//40)
-peppers = np.random.choice(len(im2), size=len(im2)//40)
-im2[salts] = 255
-im2[peppers] = 0
-im2 = im2.reshape(a)
-plt.figure()
-plt.subplot(121)
-plt.imshow(im, cmap ='gray')
-plt.subplot(122)
-plt.imshow(im2, cmap = 'gray')
-plt.show()
+#im = np.array(Image.open('ExtendedYaleB/yaleB11/yaleB11_P00A-005E-10.pgm'))
+##im2 = im + np.random.normal(0,30,im.shape)
+#a = im.shape
+#im2 = im.flatten()
+#
+#salts = np.random.choice(len(im2), size = len(im2)//40)
+#peppers = np.random.choice(len(im2), size=len(im2)//40)
+#im2[salts] = 255
+#im2[peppers] = 0
+#im2 = im2.reshape(a)
+#plt.figure()
+#plt.subplot(121)
+#plt.imshow(im, cmap ='gray')
+#plt.subplot(122)
+#plt.imshow(im2, cmap = 'gray')
+#plt.show()
 
