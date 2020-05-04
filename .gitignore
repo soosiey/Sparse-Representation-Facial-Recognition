@@ -4,3 +4,7 @@ __pycache__/*
 __pycache__/
 ExtendedYaleB*
 .DS*
+*.zip
+*.png
+*.pgm
+5-c*
